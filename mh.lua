@@ -376,7 +376,7 @@ function main()
 		if status == jopkanegra.STATUS_ENDDOWNLOADDATA then
 			iniupdat = inicfg.load(nil , mesto)
 			if tonumber(iniupdat.settings.ver) > versya then
-				sampAddChatMessage("Найдено оббновление, /update ÷òî áû ïîñìîòðåòü change log ", -1)
+				sampAddChatMessage("pipiska", -1)
 				nyjnaobnova = true
 				os.remove(mesto)
 			end
