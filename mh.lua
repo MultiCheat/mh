@@ -13,9 +13,9 @@ local active = true
 local versya = 1
 local versyaforuser = '1.00'
 local nyjnaobnova = false
-local ssilkadlyaini = 'https://raw.githubusercontent.com/Aegsdgds/autoupdatetest/main/update.ini' -- ÀÍÒÎÍ ÍÅ ÇÀÁÓÄÜ ÑÑÛËÊÓ'
+local ssilkadlyaini = 'https://raw.githubusercontent.com/Aegsdgds/autoupdatetest/main/update.ini' -- Ã€ÃÃ’ÃÃ ÃÃ… Ã‡Ã€ÃÃ“Ã„Ãœ Ã‘Ã‘Ã›Ã‹ÃŠÃ“'
 local mesto = getWorkingDirectory()..'updatingcheat.ini'
-local ssilfafile = '' --ÑÑÛËÊÓ
+local ssilfafile = '' --Ã‘Ã‘Ã›Ã‹ÃŠÃ“
 local patch = thisScript().patch  
 encoding.default = 'CP1251'
 u8 = encoding.UTF8
@@ -365,18 +365,18 @@ function main()
 	while not isSampAvailable() do wait(100) end 
 	wait(4000)
 	--[[
-	WHSkeleton ˜˜˜˜˜˜˜ AppleThe & hnnssy
-	˜˜˜˜˜˜˜˜˜ ˜˜˜˜˜˜˜ ˜˜˜˜˜ ˜˜ ˜˜˜˜˜˜˜ cover
+	WHSkeleton Â˜Â˜Â˜Â˜Â˜Â˜Â˜ AppleThe & hnnssy
+	Â˜Â˜Â˜Â˜Â˜Â˜Â˜Â˜Â˜ Â˜Â˜Â˜Â˜Â˜Â˜Â˜ Â˜Â˜Â˜Â˜Â˜ Â˜Â˜ Â˜Â˜Â˜Â˜Â˜Â˜Â˜ cover
 	FuckRadar By Trefa
-	˜˜˜˜˜˜˜˜˜ ˜˜˜˜˜˜˜ ˜˜˜˜˜ ˜˜ ˜˜˜˜˜˜ ˜˜˜˜˜˜˜˜.
-	CamHack ˜˜ sanek a.k.a Maks_Fender, edited by ANIKI
+	Â˜Â˜Â˜Â˜Â˜Â˜Â˜Â˜Â˜ Â˜Â˜Â˜Â˜Â˜Â˜Â˜ Â˜Â˜Â˜Â˜Â˜ Â˜Â˜ Â˜Â˜Â˜Â˜Â˜Â˜ Â˜Â˜Â˜Â˜Â˜Â˜Â˜Â˜.
+	CamHack Â˜Â˜ sanek a.k.a Maks_Fender, edited by ANIKI
 	]]
 
 	downloadUrlToFile(ssilkadlyaini ,mesto ,function(id, status)
 		if status == jopkanegra.STATUS_ENDDOWNLOADDATA then
 			iniupdat = inicfg.load(nil , mesto)
 			if tonumber(iniupdat.settings.ver) > versya then
-				sampAddChatMessage("Íàéäåíî îáíîâëåíèå, Ââåäèòå /update ÷òî áû ïîñìîòğåòü change log ", -1)
+				sampAddChatMessage("ĞĞ°Ğ¹Ğ´ĞµĞ½Ğ¾ Ğ¾Ğ±Ğ±Ğ½Ğ¾Ğ²Ğ»ĞµĞ½Ğ¸Ğµ, /update Ã·Ã²Ã® Ã¡Ã» Ã¯Ã®Ã±Ã¬Ã®Ã²Ã°Ã¥Ã²Ã¼ change log ", -1)
 				nyjnaobnova = true
 				os.remove(mesto)
 			end
@@ -394,10 +394,10 @@ function main()
 					sampSetGamestate(1)
 				end)
 			else
-				sampAddChatMessage('{FF0000}[˜˜˜˜˜˜] {FF8C00}˜˜˜˜˜˜˜ ˜˜˜˜˜ ˜˜˜˜˜˜˜˜˜˜ ˜ ˜˜˜˜˜˜˜˜.', 0xFFFF0000)
+				sampAddChatMessage('{FF0000}[Â˜Â˜Â˜Â˜Â˜Â˜] {FF8C00}Â˜Â˜Â˜Â˜Â˜Â˜Â˜ Â˜Â˜Â˜Â˜Â˜ Â˜Â˜Â˜Â˜Â˜Â˜Â˜Â˜Â˜Â˜ Â˜ Â˜Â˜Â˜Â˜Â˜Â˜Â˜Â˜.', 0xFFFF0000)
 			end
 		else
-			sampAddChatMessage('{FF0000}[˜˜˜˜˜˜] {FF8C00}˜˜˜˜˜˜˜ ˜˜˜˜˜ ˜˜˜˜˜˜˜˜˜˜.', 0xFFFF0000)
+			sampAddChatMessage('{FF0000}[Â˜Â˜Â˜Â˜Â˜Â˜] {FF8C00}Â˜Â˜Â˜Â˜Â˜Â˜Â˜ Â˜Â˜Â˜Â˜Â˜ Â˜Â˜Â˜Â˜Â˜Â˜Â˜Â˜Â˜Â˜.', 0xFFFF0000)
 		end
 	end)
 	font = renderCreateFont("Arial", 9, FCR_BORDER + FCR_BOLD)
@@ -409,7 +409,7 @@ function main()
 		if nyjnaobnova then
 			downloadUrlToFile(ssilfafile , mesto ,function(id, status)
 				if status == jopkanegra.STATUS_ENDDOWNLOADDATA then
-					sampAddChatMessage('Ñêğèïò îáíîâë¸í!')
+					sampAddChatMessage('Ã‘ÃªÃ°Ã¨Ã¯Ã² Ã®Ã¡Ã­Ã®Ã¢Ã«Â¸Ã­!')
 					thisScript():reload()
 				end
 			end)
@@ -512,7 +512,7 @@ function imgui.OnDrawFrame()
 		local ex, ey = getScreenResolution()
 		imgui.SetNextWindowPos(imgui.ImVec2(-2 + 1187, ey / 2 + 110), imgui.Cond.FirstUseEver)
 		imgui.SetNextWindowSize(imgui.ImVec2(217, 300), imgui.Cond.FirstUseEver)
-		imgui.Begin(u8'Îáíîâëåíèå',pdate, imgui.WindowFlags.NoCollapse + imgui.WindowFlags.NoResize)
+		imgui.Begin(u8'ÃÃ¡Ã­Ã®Ã¢Ã«Ã¥Ã­Ã¨Ã¥',pdate, imgui.WindowFlags.NoCollapse + imgui.WindowFlags.NoResize)
 		imgui.Text(zaebis)
 		imgui.Button('asfadfg', imgui.ImVec2(10, 10))
 		imgui.End()
@@ -522,16 +522,16 @@ function imgui.OnDrawFrame()
 		local ex, ey = getScreenResolution()
 		imgui.SetNextWindowPos(imgui.ImVec2(-2 + 1187, ey / 2 + 110), imgui.Cond.FirstUseEver)
 		imgui.SetNextWindowSize(imgui.ImVec2(217, 300), imgui.Cond.FirstUseEver)
-		imgui.Begin(u8'˜˜˜˜˜˜-˜˜˜', MenuWindow, imgui.WindowFlags.NoCollapse + imgui.WindowFlags.NoResize)
-		if imgui.Button(u8'˜˜˜˜', imgui.ImVec2(200, 50)) then
+		imgui.Begin(u8'Â˜Â˜Â˜Â˜Â˜Â˜-Â˜Â˜Â˜', MenuWindow, imgui.WindowFlags.NoCollapse + imgui.WindowFlags.NoResize)
+		if imgui.Button(u8'Â˜Â˜Â˜Â˜', imgui.ImVec2(200, 50)) then
 			MenuWindow.v = false
 			MenuCheats.v = true
 		end
-		if imgui.Button(u8'˜˜˜˜˜˜˜˜˜˜˜˜˜ ˜˜˜˜', imgui.ImVec2(200, 50)) then
+		if imgui.Button(u8'Â˜Â˜Â˜Â˜Â˜Â˜Â˜Â˜Â˜Â˜Â˜Â˜Â˜ Â˜Â˜Â˜Â˜', imgui.ImVec2(200, 50)) then
 			MenuWindow.v = false
 			MenuVCheats.v = true
 		end
-		if imgui.Button(u8'˜˜˜˜˜˜', imgui.ImVec2(200, 50)) then
+		if imgui.Button(u8'Â˜Â˜Â˜Â˜Â˜Â˜', imgui.ImVec2(200, 50)) then
 			MenuWindow.v = false
 			MenuGun.v = true
 		end
@@ -539,7 +539,7 @@ function imgui.OnDrawFrame()
 			MenuWindow.v = false
 			MenuPatch.v = true
 		end
-		if imgui.Button(u8'˜˜˜˜˜˜˜˜˜', imgui.ImVec2(200, 50)) then
+		if imgui.Button(u8'Â˜Â˜Â˜Â˜Â˜Â˜Â˜Â˜Â˜', imgui.ImVec2(200, 50)) then
 			MenuWindow.v = false
 			Other.v = true
 		end
@@ -550,128 +550,128 @@ function imgui.OnDrawFrame()
 		local ex, ey = getScreenResolution()
 		imgui.SetNextWindowPos(imgui.ImVec2(ex / 2 - 200, ey / 2 - 200), imgui.Cond.FirstUseEver)
 		imgui.SetNextWindowSize(imgui.ImVec2(280, 300), imgui.Cond.FirstUseEver)
-		imgui.Begin(u8'˜˜˜˜', nil, imgui.WindowFlags.NoCollapse + imgui.WindowFlags.NoResize)
-		if imgui.Button(u8'˜˜˜˜˜ <<', imgui.ImVec2(250, 30)) then
+		imgui.Begin(u8'Â˜Â˜Â˜Â˜', nil, imgui.WindowFlags.NoCollapse + imgui.WindowFlags.NoResize)
+		if imgui.Button(u8'Â˜Â˜Â˜Â˜Â˜ <<', imgui.ImVec2(250, 30)) then
 			MenuCheats.v = false
 			MenuWindow.v = true
 		end
-		if imgui.Checkbox(u8'[˜˜˜/˜˜˜˜] CBug Helper', elements.checkbox.CHelper) then
+		if imgui.Checkbox(u8'[Â˜Â˜Â˜/Â˜Â˜Â˜Â˜] CBug Helper', elements.checkbox.CHelper) then
 			HLcfg.config.CHelper = elements.checkbox.CHelper.v
 			save()
 		end
-		if imgui.Checkbox(u8'[˜˜˜/˜˜˜˜] ˜˜˜˜˜˜˜˜˜˜˜ ˜˜˜˜˜˜˜', elements.checkbox.InfinityAmmo) then
+		if imgui.Checkbox(u8'[Â˜Â˜Â˜/Â˜Â˜Â˜Â˜] Â˜Â˜Â˜Â˜Â˜Â˜Â˜Â˜Â˜Â˜Â˜ Â˜Â˜Â˜Â˜Â˜Â˜Â˜', elements.checkbox.InfinityAmmo) then
 			HLcfg.config.InfinityAmmo = elements.checkbox.InfinityAmmo.v
 			save()
 		end
-		if imgui.Checkbox(u8'[˜˜˜/˜˜˜˜] NoSpread', elements.checkbox.NoSpread) then
+		if imgui.Checkbox(u8'[Â˜Â˜Â˜/Â˜Â˜Â˜Â˜] NoSpread', elements.checkbox.NoSpread) then
 			HLcfg.config.NoSpread = elements.checkbox.NoSpread.v
 			save()
 		end
-		if imgui.Checkbox(u8'[˜˜˜/˜˜˜˜] AntiStun', elements.checkbox.AntiStun) then
+		if imgui.Checkbox(u8'[Â˜Â˜Â˜/Â˜Â˜Â˜Â˜] AntiStun', elements.checkbox.AntiStun) then
 			HLcfg.config.AntiStun = elements.checkbox.AntiStun.v
 			save()
 		end
-		if imgui.Checkbox(u8'[˜˜˜/˜˜˜˜] ˜˜˜˜˜˜˜˜˜˜˜ ˜˜˜', elements.checkbox.InifinityRun) then
+		if imgui.Checkbox(u8'[Â˜Â˜Â˜/Â˜Â˜Â˜Â˜] Â˜Â˜Â˜Â˜Â˜Â˜Â˜Â˜Â˜Â˜Â˜ Â˜Â˜Â˜', elements.checkbox.InifinityRun) then
 			HLcfg.config.InifinityRun = elements.checkbox.InifinityRun.v
 			save()
 		end
-		if imgui.Checkbox(u8'[˜˜˜/˜˜˜˜] ˜˜˜˜ +˜', elements.checkbox.AutoC) then
+		if imgui.Checkbox(u8'[Â˜Â˜Â˜/Â˜Â˜Â˜Â˜] Â˜Â˜Â˜Â˜ +Â˜', elements.checkbox.AutoC) then
 			HLcfg.config.AutoC = elements.checkbox.AutoC.v
 			save()
 		end
-		if imgui.Checkbox(u8'[˜˜˜/˜˜˜˜] ˜˜˜', elements.checkbox.Aim) then
+		if imgui.Checkbox(u8'[Â˜Â˜Â˜/Â˜Â˜Â˜Â˜] Â˜Â˜Â˜', elements.checkbox.Aim) then
 			HLcfg.config.Aim = elements.checkbox.Aim.v
 			save()
 		end
-		if imgui.Checkbox(u8'[˜˜˜/˜˜˜˜] Bhop Mode', elements.checkbox.Bhop) then
+		if imgui.Checkbox(u8'[Â˜Â˜Â˜/Â˜Â˜Â˜Â˜] Bhop Mode', elements.checkbox.Bhop) then
 			HLcfg.config.Bhop = elements.checkbox.Bhop.v
 			save()
 		end
-		if imgui.Checkbox(u8'[˜˜˜/˜˜˜˜] ˜˜˜˜˜˜˜˜˜˜', elements.checkbox.Inv) then
+		if imgui.Checkbox(u8'[Â˜Â˜Â˜/Â˜Â˜Â˜Â˜] Â˜Â˜Â˜Â˜Â˜Â˜Â˜Â˜Â˜Â˜', elements.checkbox.Inv) then
 			HLcfg.config.Inv = elements.checkbox.Inv.v
 			save()
 		end
-		if imgui.Checkbox(u8'[˜˜˜/˜˜˜˜] ˜˜˜˜˜˜˜˜ ˜˜˜˜˜˜˜˜', elements.checkbox.CollizionOb) then
+		if imgui.Checkbox(u8'[Â˜Â˜Â˜/Â˜Â˜Â˜Â˜] Â˜Â˜Â˜Â˜Â˜Â˜Â˜Â˜ Â˜Â˜Â˜Â˜Â˜Â˜Â˜Â˜', elements.checkbox.CollizionOb) then
 			HLcfg.config.CollizionOb = elements.checkbox.CollizionOb.v
 			save()
 		end
-		if imgui.Checkbox(u8'[+/-] ˜˜˜˜˜˜˜˜ ˜˜˜˜˜˜˜˜', elements.checkbox.SetSpeedAnim) then
+		if imgui.Checkbox(u8'[+/-] Â˜Â˜Â˜Â˜Â˜Â˜Â˜Â˜ Â˜Â˜Â˜Â˜Â˜Â˜Â˜Â˜', elements.checkbox.SetSpeedAnim) then
 			HLcfg.config.SetSpeedAnim = elements.checkbox.SetSpeedAnim.v
 			save()
 		end
-		if imgui.Checkbox(u8'[˜˜˜/˜˜˜˜] ˜˜˜˜-˜˜˜', elements.checkbox.AntiAfk) then
+		if imgui.Checkbox(u8'[Â˜Â˜Â˜/Â˜Â˜Â˜Â˜] Â˜Â˜Â˜Â˜-Â˜Â˜Â˜', elements.checkbox.AntiAfk) then
 			HLcfg.config.AntiAfk = elements.checkbox.AntiAfk.v
 			save()
 		end
-		if imgui.Checkbox(u8'[˜˜˜/˜˜˜˜] NameTag', elements.checkbox.NameTag) then
+		if imgui.Checkbox(u8'[Â˜Â˜Â˜/Â˜Â˜Â˜Â˜] NameTag', elements.checkbox.NameTag) then
 			HLcfg.config.NameTag = elements.checkbox.NameTag.v
 			save()
 		end
-		if imgui.Checkbox(u8'[˜˜˜/˜˜˜˜] NoFall', elements.checkbox.NoFall) then
+		if imgui.Checkbox(u8'[Â˜Â˜Â˜/Â˜Â˜Â˜Â˜] NoFall', elements.checkbox.NoFall) then
 			HLcfg.config.NoFall = elements.checkbox.NoFall.v
 			save()
 		end
-		if imgui.Checkbox(u8'[˜˜˜/˜˜˜˜] ˜˜˜˜˜˜˜˜˜˜˜ ˜˜˜˜˜˜˜˜', elements.checkbox.InfinityOxygen) then
+		if imgui.Checkbox(u8'[Â˜Â˜Â˜/Â˜Â˜Â˜Â˜] Â˜Â˜Â˜Â˜Â˜Â˜Â˜Â˜Â˜Â˜Â˜ Â˜Â˜Â˜Â˜Â˜Â˜Â˜Â˜', elements.checkbox.InfinityOxygen) then
 			HLcfg.config.InfinityOxygen = elements.checkbox.InfinityOxygen.v 
 			save()
 		end
-		if imgui.Checkbox(u8'[˜˜˜/˜˜˜˜] NoBike', elements.checkbox.NoBike) then
+		if imgui.Checkbox(u8'[Â˜Â˜Â˜/Â˜Â˜Â˜Â˜] NoBike', elements.checkbox.NoBike) then
 			HLcfg.config.NoBike = elements.checkbox.NoBike.v
 			save()
 		end
-		if imgui.Checkbox(u8'[˜˜˜/˜˜˜˜] ˜˜˜˜˜˜˜˜˜˜˜˜˜', elements.checkbox.FireResistance) then
+		if imgui.Checkbox(u8'[Â˜Â˜Â˜/Â˜Â˜Â˜Â˜] Â˜Â˜Â˜Â˜Â˜Â˜Â˜Â˜Â˜Â˜Â˜Â˜Â˜', elements.checkbox.FireResistance) then
 			HLcfg.config.FireResistance = elements.checkbox.FireResistance.v
 			save()
 		end
-		if imgui.Checkbox(u8'[˜˜˜/˜˜˜˜] ˜˜˜˜ ˜˜˜ ˜˜˜˜', elements.checkbox.DriveNoLicenze) then
+		if imgui.Checkbox(u8'[Â˜Â˜Â˜/Â˜Â˜Â˜Â˜] Â˜Â˜Â˜Â˜ Â˜Â˜Â˜ Â˜Â˜Â˜Â˜', elements.checkbox.DriveNoLicenze) then
 			HLcfg.config.DriveNoLicenze = elements.checkbox.DriveNoLicenze.v
 			save()
 		end
-		if imgui.Checkbox(u8'[˜˜˜/˜˜˜˜] TriggerBot', elements.checkbox.AutoShot) then
+		if imgui.Checkbox(u8'[Â˜Â˜Â˜/Â˜Â˜Â˜Â˜] TriggerBot', elements.checkbox.AutoShot) then
 			HLcfg.config.AutoShot = elements.checkbox.AutoShot.v
 			save()
 		end
-		if imgui.Checkbox(u8'[˜˜˜/˜˜˜˜] High jump on BMX', elements.checkbox.JBMX) then
+		if imgui.Checkbox(u8'[Â˜Â˜Â˜/Â˜Â˜Â˜Â˜] High jump on BMX', elements.checkbox.JBMX) then
 			HLcfg.config.JBMX = elements.checkbox.JBMX.v
 			save()
 		end
-		if imgui.Checkbox(u8'[˜˜˜/˜˜˜˜] ˜˜˜˜˜˜˜˜˜˜˜ ˜˜˜˜˜˜˜˜', elements.checkbox.InfinityHealth) then
+		if imgui.Checkbox(u8'[Â˜Â˜Â˜/Â˜Â˜Â˜Â˜] Â˜Â˜Â˜Â˜Â˜Â˜Â˜Â˜Â˜Â˜Â˜ Â˜Â˜Â˜Â˜Â˜Â˜Â˜Â˜', elements.checkbox.InfinityHealth) then
 			HLcfg.config.InfinityHealth = elements.checkbox.InfinityHealth.v
 			save()
 		end
-		if imgui.Checkbox(u8'[˜˜˜/˜˜˜˜] ˜˜˜˜ ˜˜˜˜˜˜', elements.checkbox.MJump) then
+		if imgui.Checkbox(u8'[Â˜Â˜Â˜/Â˜Â˜Â˜Â˜] Â˜Â˜Â˜Â˜ Â˜Â˜Â˜Â˜Â˜Â˜', elements.checkbox.MJump) then
 			HLcfg.config.MJump = elements.checkbox.MJump.v
 			save()
 		end
-		if imgui.Checkbox(u8'[˜˜˜/˜˜˜˜] ˜˜˜˜-˜˜˜˜ ˜˜˜˜˜˜˜˜˜', elements.checkbox.AntiBlockCar) then
+		if imgui.Checkbox(u8'[Â˜Â˜Â˜/Â˜Â˜Â˜Â˜] Â˜Â˜Â˜Â˜-Â˜Â˜Â˜Â˜ Â˜Â˜Â˜Â˜Â˜Â˜Â˜Â˜Â˜', elements.checkbox.AntiBlockCar) then
 			HLcfg.config.AntiBlockCar = elements.checkbox.AntiBlockCar.v
 			save()
 		end
-		if imgui.Checkbox(u8'[˜˜˜/˜˜˜˜] ˜˜˜˜-˜˜˜˜˜˜˜˜', elements.checkbox.AntiZP) then
+		if imgui.Checkbox(u8'[Â˜Â˜Â˜/Â˜Â˜Â˜Â˜] Â˜Â˜Â˜Â˜-Â˜Â˜Â˜Â˜Â˜Â˜Â˜Â˜', elements.checkbox.AntiZP) then
 			HLcfg.config.AntiZP = elements.checkbox.AntiZP.v
 			save()
 		end
-		if imgui.Checkbox(u8'[˜˜˜/˜˜˜˜] ˜˜˜˜ ˜˜ ˜˜˜˜', elements.checkbox.DriveInWater) then
+		if imgui.Checkbox(u8'[Â˜Â˜Â˜/Â˜Â˜Â˜Â˜] Â˜Â˜Â˜Â˜ Â˜Â˜ Â˜Â˜Â˜Â˜', elements.checkbox.DriveInWater) then
 			HLcfg.config.DriveInWater = elements.checkbox.DriveInWater.v
 			save()
 		end
-		if imgui.Checkbox(u8'[˜˜˜/˜˜˜˜] ˜˜˜˜-˜˜˜˜˜ ˜˜˜ ˜˜˜˜˜˜˜˜˜˜', elements.checkbox.AntiBoomPDownCar) then
+		if imgui.Checkbox(u8'[Â˜Â˜Â˜/Â˜Â˜Â˜Â˜] Â˜Â˜Â˜Â˜-Â˜Â˜Â˜Â˜Â˜ Â˜Â˜Â˜ Â˜Â˜Â˜Â˜Â˜Â˜Â˜Â˜Â˜Â˜', elements.checkbox.AntiBoomPDownCar) then
 			HLcfg.config.AntiBoomPDownCar = elements.checkbox.AntiBoomPDownCar.v
 			save()
 		end
-		if imgui.Checkbox(u8'[˜˜˜/˜˜˜˜] ˜˜ ˜˜˜˜˜˜', elements.checkbox.WHSkeleton) then
+		if imgui.Checkbox(u8'[Â˜Â˜Â˜/Â˜Â˜Â˜Â˜] Â˜Â˜ Â˜Â˜Â˜Â˜Â˜Â˜', elements.checkbox.WHSkeleton) then
 			HLcfg.config.WHSkeleton = elements.checkbox.WHSkeleton.v
 			save()
 		end
-		if imgui.Checkbox(u8'[˜˜˜/˜˜˜˜] ˜˜ ˜˜˜˜˜˜ [ARZ]', elements.checkbox.ForClad) then
+		if imgui.Checkbox(u8'[Â˜Â˜Â˜/Â˜Â˜Â˜Â˜] Â˜Â˜ Â˜Â˜Â˜Â˜Â˜Â˜ [ARZ]', elements.checkbox.ForClad) then
 			HLcfg.config.ForClad = elements.checkbox.ForClad.v
 			save()
 		end
-		if imgui.Checkbox(u8'[˜˜˜/˜˜˜˜] ˜˜ ˜˜˜˜˜˜˜˜ [ARZ]', elements.checkbox.NarkoWH) then
+		if imgui.Checkbox(u8'[Â˜Â˜Â˜/Â˜Â˜Â˜Â˜] Â˜Â˜ Â˜Â˜Â˜Â˜Â˜Â˜Â˜Â˜ [ARZ]', elements.checkbox.NarkoWH) then
 			HLcfg.config.NarkoWH = elements.checkbox.NarkoWH.v
 			save()
 		end
-		if imgui.Checkbox(u8'[˜˜˜/˜˜˜˜] ˜˜˜˜˜˜˜˜˜', elements.checkbox.Ghost) then
+		if imgui.Checkbox(u8'[Â˜Â˜Â˜/Â˜Â˜Â˜Â˜] Â˜Â˜Â˜Â˜Â˜Â˜Â˜Â˜Â˜', elements.checkbox.Ghost) then
 			HLcfg.config.Ghost = elements.checkbox.Ghost.v
 			save()
 		end
@@ -682,20 +682,20 @@ function imgui.OnDrawFrame()
 		local ex, ey = getScreenResolution()
 		imgui.SetNextWindowPos(imgui.ImVec2(ex / 2 - 200, ey / 2 - 200), imgui.Cond.FirstUseEver)
 		imgui.SetNextWindowSize(imgui.ImVec2(220, 300), imgui.Cond.FirstUseEver)
-		imgui.Begin(u8'˜˜˜˜.˜˜˜˜', nil, imgui.WindowFlags.NoCollapse + imgui.WindowFlags.NoResize)
-		if imgui.Button(u8'˜˜˜˜˜ <<', imgui.ImVec2(200, 30)) then
+		imgui.Begin(u8'Â˜Â˜Â˜Â˜.Â˜Â˜Â˜Â˜', nil, imgui.WindowFlags.NoCollapse + imgui.WindowFlags.NoResize)
+		if imgui.Button(u8'Â˜Â˜Â˜Â˜Â˜ <<', imgui.ImVec2(200, 30)) then
 			MenuVCheats.v = false
 			MenuWindow.v = true
 		end
-		if imgui.Checkbox(u8'[˜˜˜/˜˜˜˜] CarShot', elements.checkbox.CarShot) then
+		if imgui.Checkbox(u8'[Â˜Â˜Â˜/Â˜Â˜Â˜Â˜] CarShot', elements.checkbox.CarShot) then
 			HLcfg.config.CarShot = elements.checkbox.CarShot.v
 			save()
 		end
-		if imgui.Checkbox(u8'[˜˜˜/˜˜˜˜] ˜˜˜˜˜˜', elements.checkbox.Rvanka) then
+		if imgui.Checkbox(u8'[Â˜Â˜Â˜/Â˜Â˜Â˜Â˜] Â˜Â˜Â˜Â˜Â˜Â˜', elements.checkbox.Rvanka) then
 			HLcfg.config.Rvanka = elements.checkbox.Rvanka.v
 			save()
 		end
-		if imgui.Checkbox(u8'[˜˜˜/˜˜˜˜] ˜˜˜˜', elements.checkbox.Lugs) then
+		if imgui.Checkbox(u8'[Â˜Â˜Â˜/Â˜Â˜Â˜Â˜] Â˜Â˜Â˜Â˜', elements.checkbox.Lugs) then
 			HLcfg.config.Lugs = elements.checkbox.Lugs.v
 			save()
 		end
@@ -706,20 +706,20 @@ function imgui.OnDrawFrame()
 		local ex, ey = getScreenResolution()
 		imgui.SetNextWindowPos(imgui.ImVec2(ex / 2 - 200, ey / 2 - 200), imgui.Cond.FirstUseEver)
 		imgui.SetNextWindowSize(imgui.ImVec2(250, 180), imgui.Cond.FirstUseEver)
-		imgui.Begin(u8'˜˜˜˜˜˜ ˜˜˜˜˜˜', nil, imgui.WindowFlags.NoCollapse + imgui.WindowFlags.NoResize)
-		if imgui.Button(u8'˜˜˜˜˜ <<', imgui.ImVec2(200, 30)) then
+		imgui.Begin(u8'Â˜Â˜Â˜Â˜Â˜Â˜ Â˜Â˜Â˜Â˜Â˜Â˜', nil, imgui.WindowFlags.NoCollapse + imgui.WindowFlags.NoResize)
+		if imgui.Button(u8'Â˜Â˜Â˜Â˜Â˜ <<', imgui.ImVec2(200, 30)) then
 			MenuGun.v = false
 			MenuWindow.v = true
 		end
-		imgui.Text(u8'˜˜˜˜˜˜˜ ˜˜˜-˜˜ ˜˜˜˜˜˜')
+		imgui.Text(u8'Â˜Â˜Â˜Â˜Â˜Â˜Â˜ Â˜Â˜Â˜-Â˜Â˜ Â˜Â˜Â˜Â˜Â˜Â˜')
 		imgui.InputText(u8'##GiveGun', AmmoGun)
-		imgui.Text(u8'˜˜˜˜˜˜˜˜ ˜˜˜˜˜˜')
+		imgui.Text(u8'Â˜Â˜Â˜Â˜Â˜Â˜Â˜Â˜ Â˜Â˜Â˜Â˜Â˜Â˜')
 		imgui.Combo('##COMBO', selectGun, ComboGun)
-		if imgui.Button(u8'˜˜˜˜˜˜', imgui.ImVec2(200, 0)) then
+		if imgui.Button(u8'Â˜Â˜Â˜Â˜Â˜Â˜', imgui.ImVec2(200, 0)) then
 			if AmmoGun.v ~= '' then
 				checks()
 			else
-				sampAddChatMessage('{FF0000}[˜˜˜˜˜˜] {FF8C00}˜˜˜˜˜˜˜ ˜˜˜-˜˜ ˜˜˜˜˜˜.', 0xFFFF0000)
+				sampAddChatMessage('{FF0000}[Â˜Â˜Â˜Â˜Â˜Â˜] {FF8C00}Â˜Â˜Â˜Â˜Â˜Â˜Â˜ Â˜Â˜Â˜-Â˜Â˜ Â˜Â˜Â˜Â˜Â˜Â˜.', 0xFFFF0000)
 			end
 		end
 		imgui.End()
@@ -729,60 +729,60 @@ function imgui.OnDrawFrame()
 		local ex, ey = getScreenResolution()
 		imgui.SetNextWindowPos(imgui.ImVec2(ex / 2 - 200, ey / 2 - 200), imgui.Cond.FirstUseEver)
 		imgui.SetNextWindowSize(imgui.ImVec2(270, 180), imgui.Cond.FirstUseEver)
-		imgui.Begin(u8'˜˜˜˜˜˜', nil, imgui.WindowFlags.NoCollapse + imgui.WindowFlags.NoResize)
-		if imgui.Button(u8'˜˜˜˜˜ <<', imgui.ImVec2(250, 30)) then
+		imgui.Begin(u8'Â˜Â˜Â˜Â˜Â˜Â˜', nil, imgui.WindowFlags.NoCollapse + imgui.WindowFlags.NoResize)
+		if imgui.Button(u8'Â˜Â˜Â˜Â˜Â˜ <<', imgui.ImVec2(250, 30)) then
 			Other.v = false
 			MenuWindow.v = true
 		end
-		if imgui.Checkbox(u8'[˜˜˜/˜˜˜˜] ˜˜˜˜˜˜ ˜˜˜˜˜', elements.checkbox.SafeScreen) then
+		if imgui.Checkbox(u8'[Â˜Â˜Â˜/Â˜Â˜Â˜Â˜] Â˜Â˜Â˜Â˜Â˜Â˜ Â˜Â˜Â˜Â˜Â˜', elements.checkbox.SafeScreen) then
 			HLcfg.config.SafeScreen = elements.checkbox.SafeScreen.v
 			save()
 		end
-		if imgui.Checkbox(u8'[˜˜˜/˜˜˜˜] ˜˜˜ ˜˜ T', elements.checkbox.ChatT) then
+		if imgui.Checkbox(u8'[Â˜Â˜Â˜/Â˜Â˜Â˜Â˜] Â˜Â˜Â˜ Â˜Â˜ T', elements.checkbox.ChatT) then
 			HLcfg.config.ChatT = elements.checkbox.ChatT
 			save()
 		end
-		if imgui.Checkbox(u8'[˜˜˜/˜˜˜˜] ˜˜˜˜˜ ˜˜˜˜˜', elements.checkbox.GRadar) then
+		if imgui.Checkbox(u8'[Â˜Â˜Â˜/Â˜Â˜Â˜Â˜] Â˜Â˜Â˜Â˜Â˜ Â˜Â˜Â˜Â˜Â˜', elements.checkbox.GRadar) then
 			HLcfg.config.GRadar = elements.checkbox.GRadar.v
 			save()
 		end
-		if imgui.Checkbox(u8'[˜˜˜/˜˜˜˜] AntiBlockedPlayer', elements.checkbox.BlockedPlayer) then
+		if imgui.Checkbox(u8'[Â˜Â˜Â˜/Â˜Â˜Â˜Â˜] AntiBlockedPlayer', elements.checkbox.BlockedPlayer) then
 			HLcfg.config.BlockedPlayer = elements.checkbox.BlockedPlayer.v 
 			save()
 		end
-		if imgui.Checkbox(u8'[˜˜˜/˜˜˜˜] ˜˜˜˜˜˜˜ /dl', elements.checkbox.ClearDl) then
+		if imgui.Checkbox(u8'[Â˜Â˜Â˜/Â˜Â˜Â˜Â˜] Â˜Â˜Â˜Â˜Â˜Â˜Â˜ /dl', elements.checkbox.ClearDl) then
 			HLcfg.config.ClearDl = elements.checkbox.ClearDl.v
 			save()
 		end
-		if imgui.Checkbox(u8'[˜˜˜/˜˜˜˜] ˜˜˜˜˜˜˜ ˜˜˜˜˜˜˜˜˜', elements.checkbox.MStop) then
+		if imgui.Checkbox(u8'[Â˜Â˜Â˜/Â˜Â˜Â˜Â˜] Â˜Â˜Â˜Â˜Â˜Â˜Â˜ Â˜Â˜Â˜Â˜Â˜Â˜Â˜Â˜Â˜', elements.checkbox.MStop) then
 			HLcfg.config.MStop = elements.checkbox.MStop.v
 			save()
 		end
-		if imgui.Checkbox(u8'[˜˜˜/˜˜˜˜] AntiCarSkill', elements.checkbox.AntiCarSkill) then
+		if imgui.Checkbox(u8'[Â˜Â˜Â˜/Â˜Â˜Â˜Â˜] AntiCarSkill', elements.checkbox.AntiCarSkill) then
 			HLcfg.config.AntiCarSkill = elements.checkbox.AntiCarSkill.v
 			save()
 		end
-		if imgui.Checkbox(u8'[˜˜˜/˜˜˜˜] AntiEject', elements.checkbox.AntiEject) then
+		if imgui.Checkbox(u8'[Â˜Â˜Â˜/Â˜Â˜Â˜Â˜] AntiEject', elements.checkbox.AntiEject) then
 			HLcfg.config.AntiEject = elements.checkbox.AntiEject.v
 			save()
 		end
-		if imgui.Checkbox(u8'[˜˜˜/˜˜˜˜] NoRadio', elements.checkbox.NoRadio) then
+		if imgui.Checkbox(u8'[Â˜Â˜Â˜/Â˜Â˜Â˜Â˜] NoRadio', elements.checkbox.NoRadio) then
 			HLcfg.config.NoRadio = elements.checkbox.NoRadio.v
 			save()
 		end
-		if imgui.Checkbox(u8'[˜˜˜/˜˜˜˜] ˜˜˜˜˜˜˜ "˜˜˜˜˜˜ ˜˜˜˜˜"', elements.checkbox.NoEatAll) then
+		if imgui.Checkbox(u8'[Â˜Â˜Â˜/Â˜Â˜Â˜Â˜] Â˜Â˜Â˜Â˜Â˜Â˜Â˜ "Â˜Â˜Â˜Â˜Â˜Â˜ Â˜Â˜Â˜Â˜Â˜"', elements.checkbox.NoEatAll) then
 			HLcfg.config.NoEatAll = elements.checkbox.NoEatAll.v
 			save()
 		end
-		if imgui.Checkbox(u8'[˜˜˜/˜˜˜˜] ˜˜˜˜˜˜˜ ˜˜˜˜', elements.checkbox.Traicer) then
+		if imgui.Checkbox(u8'[Â˜Â˜Â˜/Â˜Â˜Â˜Â˜] Â˜Â˜Â˜Â˜Â˜Â˜Â˜ Â˜Â˜Â˜Â˜', elements.checkbox.Traicer) then
 			HLcfg.config.Traicer = elements.checkbox.Traicer.v
 			save()
 		end
-		if imgui.Checkbox(u8'[˜˜˜/˜˜˜˜] ˜˜˜˜-˜˜˜˜˜˜', elements.checkbox.AntiRv) then
+		if imgui.Checkbox(u8'[Â˜Â˜Â˜/Â˜Â˜Â˜Â˜] Â˜Â˜Â˜Â˜-Â˜Â˜Â˜Â˜Â˜Â˜', elements.checkbox.AntiRv) then
 			HLcfg.config.AntiRv = elements.checkbox.AntiRv.v
 			save()
 		end
-		if imgui.Checkbox(u8'[˜˜˜/˜˜˜˜] ˜˜˜˜-˜˜˜˜˜', elements.checkbox.AntiRecon) then
+		if imgui.Checkbox(u8'[Â˜Â˜Â˜/Â˜Â˜Â˜Â˜] Â˜Â˜Â˜Â˜-Â˜Â˜Â˜Â˜Â˜', elements.checkbox.AntiRecon) then
 			HLcfg.config.AntiRecon = elements.checkbox.AntiRecon.v
 			save()
 		end
@@ -794,63 +794,63 @@ function imgui.OnDrawFrame()
 		imgui.SetNextWindowPos(imgui.ImVec2(ex / 2 - 200, ey / 2 - 200), imgui.Cond.FirstUseEver)
 		imgui.SetNextWindowSize(imgui.ImVec2(260, 220), imgui.Cond.FirstUseEver)
 		imgui.Begin(u8'Nops', nil, imgui.WindowFlags.NoCollapse + imgui.WindowFlags.NoResize)
-		if imgui.Button(u8'˜˜˜˜˜ <<', imgui.ImVec2(200, 30)) then
+		if imgui.Button(u8'Â˜Â˜Â˜Â˜Â˜ <<', imgui.ImVec2(200, 30)) then
 			MenuPatch.v = false
 			MenuWindow.v = true
 		end
-		if imgui.Checkbox(u8'[˜˜˜/˜˜˜˜] Nop NoFreeze', elements.checkbox.NoFreeze) then
+		if imgui.Checkbox(u8'[Â˜Â˜Â˜/Â˜Â˜Â˜Â˜] Nop NoFreeze', elements.checkbox.NoFreeze) then
 			HLcfg.config.NoFreeze = elements.checkbox.NoFreeze.v
 			save()
 		end
-		if imgui.Checkbox(u8'[˜˜˜/˜˜˜˜] Nop ShowDialog', elements.checkbox.ShowDialog) then
+		if imgui.Checkbox(u8'[Â˜Â˜Â˜/Â˜Â˜Â˜Â˜] Nop ShowDialog', elements.checkbox.ShowDialog) then
 			HLcfg.config.ShowDialog = elements.checkbox.ShowDialog.v
 			save()
 		end
-		if imgui.Checkbox(u8'[˜˜˜/˜˜˜˜] Nop Spectate', elements.checkbox.Spectate) then
+		if imgui.Checkbox(u8'[Â˜Â˜Â˜/Â˜Â˜Â˜Â˜] Nop Spectate', elements.checkbox.Spectate) then
 			HLcfg.config.Spectate = elements.checkbox.Spectate.v
 			save()
 		end
-		if imgui.Checkbox(u8'[˜˜˜/˜˜˜˜] Nop Health', elements.checkbox.NHealth) then
+		if imgui.Checkbox(u8'[Â˜Â˜Â˜/Â˜Â˜Â˜Â˜] Nop Health', elements.checkbox.NHealth) then
 			HLcfg.config.NHealth = elements.checkbox.NHealth.v
 			save()
 		end
-		if imgui.Checkbox(u8'[˜˜˜/˜˜˜˜] Nop GiveGun', elements.checkbox.GiveGun) then
+		if imgui.Checkbox(u8'[Â˜Â˜Â˜/Â˜Â˜Â˜Â˜] Nop GiveGun', elements.checkbox.GiveGun) then
 			HLcfg.config.GiveGun = elements.checkbox.GiveGun.v 
 			save()
 		end
-		if imgui.Checkbox(u8'[˜˜˜/˜˜˜˜] Nop ResetGun', elements.checkbox.ResetGun) then
+		if imgui.Checkbox(u8'[Â˜Â˜Â˜/Â˜Â˜Â˜Â˜] Nop ResetGun', elements.checkbox.ResetGun) then
 			HLcfg.config.ResetGun = elements.checkbox.ResetGun.v
 			save()
 		end
-		if imgui.Checkbox(u8'[˜˜˜/˜˜˜˜] Nop SetGun', elements.checkbox.SetGun) then
+		if imgui.Checkbox(u8'[Â˜Â˜Â˜/Â˜Â˜Â˜Â˜] Nop SetGun', elements.checkbox.SetGun) then
 			HLcfg.config.SetGun = elements.checkbox.SetGun.v
 			save()
 		end
-		if imgui.Checkbox(u8'[˜˜˜/˜˜˜˜] Nop RequestClass', elements.checkbox.RequestClass) then
+		if imgui.Checkbox(u8'[Â˜Â˜Â˜/Â˜Â˜Â˜Â˜] Nop RequestClass', elements.checkbox.RequestClass) then
 			HLcfg.config.RequestClass = elements.checkbox.RequestClass.v
 			save()
 		end
-		if imgui.Checkbox(u8'[˜˜˜/˜˜˜˜] Nop RequestSpawn', elements.checkbox.RequestSpawn) then
+		if imgui.Checkbox(u8'[Â˜Â˜Â˜/Â˜Â˜Â˜Â˜] Nop RequestSpawn', elements.checkbox.RequestSpawn) then
 			HLcfg.config.RequestSpawn = elements.checkbox.RequestSpawn.v
 			save()
 		end
-		if imgui.Checkbox(u8'[˜˜˜/˜˜˜˜] Nop ApplyAnimation', elements.checkbox.ApplyAnimation) then
+		if imgui.Checkbox(u8'[Â˜Â˜Â˜/Â˜Â˜Â˜Â˜] Nop ApplyAnimation', elements.checkbox.ApplyAnimation) then
 			HLcfg.config.ApplyAnimation = elements.checkbox.ApplyAnimation.v
 			save()
 		end
-		if imgui.Checkbox(u8'[˜˜˜/˜˜˜˜] Nop ClearAnimation', elements.checkbox.ClearAnimation) then
+		if imgui.Checkbox(u8'[Â˜Â˜Â˜/Â˜Â˜Â˜Â˜] Nop ClearAnimation', elements.checkbox.ClearAnimation) then
 			HLcfg.config.ClearAnimation = elements.checkbox.ClearAnimation.v
 			save()
 		end
-		if imgui.Checkbox(u8'[˜˜˜/˜˜˜˜] Nop ForceClass', elements.checkbox.ForceClass) then
+		if imgui.Checkbox(u8'[Â˜Â˜Â˜/Â˜Â˜Â˜Â˜] Nop ForceClass', elements.checkbox.ForceClass) then
 			HLcfg.config.ForceClass = elements.checkbox.ForceClass.v
 			save()
 		end
-		if imgui.Checkbox(u8'[˜˜˜/˜˜˜˜] Nop FacingAngle', elements.checkbox.FacingAngle) then
+		if imgui.Checkbox(u8'[Â˜Â˜Â˜/Â˜Â˜Â˜Â˜] Nop FacingAngle', elements.checkbox.FacingAngle) then
 			HLcfg.config.FacingAngle = elements.checkbox.FacingAngle.v 
 			save()
 		end
-		if imgui.Checkbox(u8'[˜˜˜/˜˜˜˜] Nop ToggleControl', elements.checkbox.ToggleControl) then
+		if imgui.Checkbox(u8'[Â˜Â˜Â˜/Â˜Â˜Â˜Â˜] Nop ToggleControl', elements.checkbox.ToggleControl) then
 			HLcfg.config.ToggleControl = elements.checkbox.ToggleControl.v
 			save()
 		end
@@ -906,7 +906,7 @@ function check_buttons()
 				if sampIs3dTextDefined(n) then
 					local string, clr, posX, posY, posZ, dist, iW, pID, vehID = sampGet3dTextInfoById(n)
 					local Px, Py, Pz = getCharCoordinates(playerPed)
-					if isPointOnScreen(posX, posY, posZ, 0.0) and string.find(string, '˜˜˜˜˜˜˜˜') then
+					if isPointOnScreen(posX, posY, posZ, 0.0) and string.find(string, 'Â˜Â˜Â˜Â˜Â˜Â˜Â˜Â˜') then
 						if getDistanceBetweenCoords2d(posX, posY, Px, Py) > 4.0 then
 							local wposX, wposY = convert3DCoordsToScreen(posX, posY, posZ)
 							renderFontDrawText(font, string, wposX, wposY, clr)
@@ -927,7 +927,7 @@ function check_buttons()
 						wpos2X, wpos2Y = convert3DCoordsToScreen(charPosX, charPosY, charPosZ)
 						renderDrawLine(wposX, wposY, wpos2X, wpos2Y, 1, 0x883c8fb5)
 						renderDrawPolygon(wposX, wposY, 3, 3, 7, 0, 0xba3c8fb5)
-						renderFontDrawText(font, "{3c8fb5}[WH] {ffffff} ˜˜˜˜", wposX + 5, wposY - 7, 0xcac1f4c1)
+						renderFontDrawText(font, "{3c8fb5}[WH] {ffffff} Â˜Â˜Â˜Â˜", wposX + 5, wposY - 7, 0xcac1f4c1)
 					end
 				end
 			end
@@ -1751,7 +1751,7 @@ function samp.onSetVehicleVelocity()
 end
 
 function samp.onCreate3DText(id,color,position,dist,testLOS,attachedPlayerId,attachedVehicleId,text)
-    if color == -1 and text:find("˜˜˜˜˜%s*˜˜˜˜˜˜˜˜˜˜˜˜ ˜˜˜˜˜˜˜˜: {D1DE43}%d+ ˜˜/˜.{FFFFFF}%s*˜˜˜˜˜ ˜˜ ˜˜˜˜˜˜˜˜˜: {D1DE43}%d+%$.{FFFFFF}%s*˜˜˜˜˜˜˜˜: {D1DE43}.*") then
+    if color == -1 and text:find("Â˜Â˜Â˜Â˜Â˜%s*Â˜Â˜Â˜Â˜Â˜Â˜Â˜Â˜Â˜Â˜Â˜Â˜ Â˜Â˜Â˜Â˜Â˜Â˜Â˜Â˜: {D1DE43}%d+ Â˜Â˜/Â˜.{FFFFFF}%s*Â˜Â˜Â˜Â˜Â˜ Â˜Â˜ Â˜Â˜Â˜Â˜Â˜Â˜Â˜Â˜Â˜: {D1DE43}%d+%$.{FFFFFF}%s*Â˜Â˜Â˜Â˜Â˜Â˜Â˜Â˜: {D1DE43}.*") then
         if not checkIntable(radars, position.x,position.y,position.z) then
             table.insert(radars,{position.x,position.y,position.z})
         end
