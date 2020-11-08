@@ -384,6 +384,7 @@ function main()
 	end)
 	sampRegisterChatCommand('update', function()
 		pdate.v = not pdate.v
+		SampAddChatMessage('Я гей', -1)
 	end)
 	sampRegisterChatCommand('/re', function(number)
 		if number ~= '' then
