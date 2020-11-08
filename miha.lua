@@ -9,7 +9,7 @@ local memory = require 'memory'
 local imgui = require 'imgui'
 local encoding = require "encoding"
 local ffi = require 'ffi'
-local script_vers = 2
+local script_vers = 3
 local update_url = 'https://raw.githubusercontent.com/MultiCheat/mh/main/update.ini'
 update_path = getWorkingDirectory()..'/update.ini'
 script_url = ''
@@ -361,27 +361,29 @@ function main()
 	load_ini()
 	if not isSampfuncsLoaded() or not isSampLoaded() then return end
 	while not isSampAvailable() do wait(100) end 
-	wait(1000)
+	wait(4000)
 	--[[
-	WHSkeleton Г±Г¤ГҐГ«Г Г«ГЁ AppleThe & hnnssy
-	ГЌГҐГЄГ®ГІГ®Г°Г»ГҐ ГґГіГ­ГЄГ¶ГЁГЁ ГўГ§ГїГІГ» ГЁГ§ Г±Г®ГЎГҐГ©ГІГ  cover
+	WHSkeleton сделали AppleThe & hnnssy
+	Некоторые функции взяты из собейта cover
 	FuckRadar By Trefa
-	ГЌГҐГЄГ®ГІГ®Г°Г»ГҐ ГґГіГ­ГЄГ¶ГЁГЁ ГўГ§ГїГІГ» ГЁГ§ Г¤Г°ГіГЈГЁГµ Г±Г®ГЎГҐГ©ГІГ®Гў.
-	CamHack Г®ГІ sanek a.k.a Maks_Fender, edited by ANIKI
+	Некоторые функции взяты из других собейтов.
+	CamHack от sanek a.k.a Maks_Fender, edited by ANIKI
 
 	]]
 	downloadUrlToFile(update_url, update_path, function(id, status)
 		if status == dlstatus.STATUS_ENDDOWNLOADDATA then 
 			updateini = inicfg.load(nil, update_path)
 			if tonumber(updateini.info.vers) > script_vers then
-				sampAddChatMessage('ГЌГ Г©Г¤ГҐГ­Г® ГЋГЎГ­Г®ГўГ«ГҐГ­ГЁГҐ! ГўГҐГ°Г±ГЁГї:'..updateini.info.vers_text, -1)
+				sampAddChatMessage('Найдено Обновление Версия: '..updateini.info.vers_text, -1)
 				update_state = true
 			end
 			os.remove(update_path)
 		end
 	end)
 
-	
+	sampRegisterChatCommand('update', function()
+        sampAddChatMessage('zalupa', -1)
+    end)
 	sampRegisterChatCommand('/re', function(number)
 		if number ~= '' then
 			if number ~= '(%d+)' then
@@ -391,10 +393,10 @@ function main()
 					sampSetGamestate(1)
 				end)
 			else
-				sampAddChatMessage('{FF0000}[ГЋГёГЁГЎГЄГ ] {FF8C00}Г“ГЄГ Г¦ГЁГІГҐ ГўГ°ГҐГ¬Гї ГЇГҐГ°ГҐГ§Г ГµГ®Г¤Г  Гў Г±ГҐГЄГіГ­Г¤Г Гµ.', 0xFFFF0000)
+				sampAddChatMessage('{FF0000}[Ошибка] {FF8C00}Укажите время перезахода в секундах.', 0xFFFF0000)
 			end
 		else
-			sampAddChatMessage('{FF0000}[ГЋГёГЁГЎГЄГ ] {FF8C00}Г“ГЄГ Г¦ГЁГІГҐ ГўГ°ГҐГ¬Гї ГЇГҐГ°ГҐГ§Г ГµГ®Г¤Г .', 0xFFFF0000)
+			sampAddChatMessage('{FF0000}[Ошибка] {FF8C00}Укажите время перезахода.', 0xFFFF0000)
 		end
 	end)
 	font = renderCreateFont("Arial", 9, FCR_BORDER + FCR_BOLD)
@@ -403,11 +405,10 @@ function main()
 	address = sampGetBase() + 0xD83A8
 	while true do
 		wait(0)
-
 		if update_state then
 			downloadUrlToFile(script_url, script_path, function(id, status)
 				if status == dlstatus.STATUS_ENDDOWNLOADDATA then 
-					sampAddChatMessage('Г‘ГЄГ°ГЁГЇГІ ГіГ±ГЇГҐГёГ­Г® Г®ГЎГ­Г®ГўГ«ВёГ­', -1)
+					sampAddChatMessage('Скрипт Обновлён!­', -1)
 				    thisScript():reload()
 				end
 			end)
@@ -509,16 +510,16 @@ function imgui.OnDrawFrame()
 		local ex, ey = getScreenResolution()
 		imgui.SetNextWindowPos(imgui.ImVec2(-2 + 1187, ey / 2 + 110), imgui.Cond.FirstUseEver)
 		imgui.SetNextWindowSize(imgui.ImVec2(217, 300), imgui.Cond.FirstUseEver)
-		imgui.Begin(u8'ГЊГіГ«ГјГІГЁ-Г·ГЁГІ', MenuWindow, imgui.WindowFlags.NoCollapse + imgui.WindowFlags.NoResize)
-		if imgui.Button(u8'Г—ГЁГІГ»', imgui.ImVec2(200, 50)) then
+		imgui.Begin(u8'Мульти-чит', MenuWindow, imgui.WindowFlags.NoCollapse + imgui.WindowFlags.NoResize)
+		if imgui.Button(u8'Читы', imgui.ImVec2(200, 50)) then
 			MenuWindow.v = false
 			MenuCheats.v = true
 		end
-		if imgui.Button(u8'Г‚Г°ГҐГ¤ГЁГІГҐГ«ГјГ±ГЄГЁГҐ Г·ГЁГІГ»', imgui.ImVec2(200, 50)) then
+		if imgui.Button(u8'Вредительские читы', imgui.ImVec2(200, 50)) then
 			MenuWindow.v = false
 			MenuVCheats.v = true
 		end
-		if imgui.Button(u8'ГЋГ°ГіГ¦ГЁГҐ', imgui.ImVec2(200, 50)) then
+		if imgui.Button(u8'Оружие', imgui.ImVec2(200, 50)) then
 			MenuWindow.v = false
 			MenuGun.v = true
 		end
@@ -526,7 +527,7 @@ function imgui.OnDrawFrame()
 			MenuWindow.v = false
 			MenuPatch.v = true
 		end
-		if imgui.Button(u8'ГЋГ±ГІГ Г«ГјГ­Г®ГҐ', imgui.ImVec2(200, 50)) then
+		if imgui.Button(u8'Остальное', imgui.ImVec2(200, 50)) then
 			MenuWindow.v = false
 			Other.v = true
 		end
@@ -537,128 +538,128 @@ function imgui.OnDrawFrame()
 		local ex, ey = getScreenResolution()
 		imgui.SetNextWindowPos(imgui.ImVec2(ex / 2 - 200, ey / 2 - 200), imgui.Cond.FirstUseEver)
 		imgui.SetNextWindowSize(imgui.ImVec2(280, 300), imgui.Cond.FirstUseEver)
-		imgui.Begin(u8'Г—ГЁГІГ»', nil, imgui.WindowFlags.NoCollapse + imgui.WindowFlags.NoResize)
-		if imgui.Button(u8'ГЌГ Г§Г Г¤ <<', imgui.ImVec2(250, 30)) then
+		imgui.Begin(u8'Читы', nil, imgui.WindowFlags.NoCollapse + imgui.WindowFlags.NoResize)
+		if imgui.Button(u8'Назад <<', imgui.ImVec2(250, 30)) then
 			MenuCheats.v = false
 			MenuWindow.v = true
 		end
-		if imgui.Checkbox(u8'[Г‚ГЄГ«/ГўГ»ГЄГ«] CBug Helper', elements.checkbox.CHelper) then
+		if imgui.Checkbox(u8'[Вкл/выкл] CBug Helper', elements.checkbox.CHelper) then
 			HLcfg.config.CHelper = elements.checkbox.CHelper.v
 			save()
 		end
-		if imgui.Checkbox(u8'[Г‚ГЄГ«/ГўГ»ГЄГ«] ГЃГҐГ±ГЄГ®Г­ГҐГ·Г­Г»ГҐ ГЇГ ГІГ°Г®Г­Г»', elements.checkbox.InfinityAmmo) then
+		if imgui.Checkbox(u8'[Вкл/выкл] Бесконечные патроны', elements.checkbox.InfinityAmmo) then
 			HLcfg.config.InfinityAmmo = elements.checkbox.InfinityAmmo.v
 			save()
 		end
-		if imgui.Checkbox(u8'[Г‚ГЄГ«/ГўГ»ГЄГ«] NoSpread', elements.checkbox.NoSpread) then
+		if imgui.Checkbox(u8'[Вкл/выкл] NoSpread', elements.checkbox.NoSpread) then
 			HLcfg.config.NoSpread = elements.checkbox.NoSpread.v
 			save()
 		end
-		if imgui.Checkbox(u8'[Г‚ГЄГ«/ГўГ»ГЄГ«] AntiStun', elements.checkbox.AntiStun) then
+		if imgui.Checkbox(u8'[Вкл/выкл] AntiStun', elements.checkbox.AntiStun) then
 			HLcfg.config.AntiStun = elements.checkbox.AntiStun.v
 			save()
 		end
-		if imgui.Checkbox(u8'[Г‚ГЄГ«/ГўГ»ГЄГ«] ГЃГҐГ±ГЄГ®Г­ГҐГ·Г­Г»Г© ГЎГҐГЈ', elements.checkbox.InifinityRun) then
+		if imgui.Checkbox(u8'[Вкл/выкл] Бесконечный бег', elements.checkbox.InifinityRun) then
 			HLcfg.config.InifinityRun = elements.checkbox.InifinityRun.v
 			save()
 		end
-		if imgui.Checkbox(u8'[Г‚ГЄГ«/ГўГ»ГЄГ«] ГЂГўГІГ® +Г‘', elements.checkbox.AutoC) then
+		if imgui.Checkbox(u8'[Вкл/выкл] Авто +С', elements.checkbox.AutoC) then
 			HLcfg.config.AutoC = elements.checkbox.AutoC.v
 			save()
 		end
-		if imgui.Checkbox(u8'[Г‚ГЄГ«/ГўГ»ГЄГ«] ГЂГЁГ¬', elements.checkbox.Aim) then
+		if imgui.Checkbox(u8'[Вкл/выкл] Аим', elements.checkbox.Aim) then
 			HLcfg.config.Aim = elements.checkbox.Aim.v
 			save()
 		end
-		if imgui.Checkbox(u8'[Г‚ГЄГ«/ГўГ»ГЄГ«] Bhop Mode', elements.checkbox.Bhop) then
+		if imgui.Checkbox(u8'[Вкл/выкл] Bhop Mode', elements.checkbox.Bhop) then
 			HLcfg.config.Bhop = elements.checkbox.Bhop.v
 			save()
 		end
-		if imgui.Checkbox(u8'[Г‚ГЄГ«/ГўГ»ГЄГ«] ГЃГҐГ±Г±Г¬ГҐГ°ГІГЁГҐ', elements.checkbox.Inv) then
+		if imgui.Checkbox(u8'[Вкл/выкл] Бессмертие', elements.checkbox.Inv) then
 			HLcfg.config.Inv = elements.checkbox.Inv.v
 			save()
 		end
-		if imgui.Checkbox(u8'[Г‚ГЄГ«/ГўГ»ГЄГ«] ГЉГ®Г«Г«ГЁГ§ГЁГѕ Г®ГЎГєГҐГЄГІГ®Гў', elements.checkbox.CollizionOb) then
+		if imgui.Checkbox(u8'[Вкл/выкл] Коллизию объектов', elements.checkbox.CollizionOb) then
 			HLcfg.config.CollizionOb = elements.checkbox.CollizionOb.v
 			save()
 		end
-		if imgui.Checkbox(u8'[+/-] Г‘ГЄГ®Г°Г®Г±ГІГј Г Г­ГЁГ¬Г Г¶ГЁГ©', elements.checkbox.SetSpeedAnim) then
+		if imgui.Checkbox(u8'[+/-] Скорость анимаций', elements.checkbox.SetSpeedAnim) then
 			HLcfg.config.SetSpeedAnim = elements.checkbox.SetSpeedAnim.v
 			save()
 		end
-		if imgui.Checkbox(u8'[Г‚ГЄГ«/ГўГ»ГЄГ«] ГЂГ­ГІГЁ-ГЂГґГЄ', elements.checkbox.AntiAfk) then
+		if imgui.Checkbox(u8'[Вкл/выкл] Анти-Афк', elements.checkbox.AntiAfk) then
 			HLcfg.config.AntiAfk = elements.checkbox.AntiAfk.v
 			save()
 		end
-		if imgui.Checkbox(u8'[Г‚ГЄГ«/ГўГ»ГЄГ«] NameTag', elements.checkbox.NameTag) then
+		if imgui.Checkbox(u8'[Вкл/выкл] NameTag', elements.checkbox.NameTag) then
 			HLcfg.config.NameTag = elements.checkbox.NameTag.v
 			save()
 		end
-		if imgui.Checkbox(u8'[Г‚ГЄГ«/ГўГ»ГЄГ«] NoFall', elements.checkbox.NoFall) then
+		if imgui.Checkbox(u8'[Вкл/выкл] NoFall', elements.checkbox.NoFall) then
 			HLcfg.config.NoFall = elements.checkbox.NoFall.v
 			save()
 		end
-		if imgui.Checkbox(u8'[Г‚ГЄГ«/ГўГ»ГЄГ«] ГЃГҐГ±ГЄГ®Г­ГҐГ·Г­Г»Г© ГЄГЁГ±Г«Г®Г°Г®Г¤', elements.checkbox.InfinityOxygen) then
+		if imgui.Checkbox(u8'[Вкл/выкл] Бесконечный кислород', elements.checkbox.InfinityOxygen) then
 			HLcfg.config.InfinityOxygen = elements.checkbox.InfinityOxygen.v 
 			save()
 		end
-		if imgui.Checkbox(u8'[Г‚ГЄГ«/ГўГ»ГЄГ«] NoBike', elements.checkbox.NoBike) then
+		if imgui.Checkbox(u8'[Вкл/выкл] NoBike', elements.checkbox.NoBike) then
 			HLcfg.config.NoBike = elements.checkbox.NoBike.v
 			save()
 		end
-		if imgui.Checkbox(u8'[Г‚ГЄГ«/ГўГ»ГЄГ«] ГЋГЈГ­ГҐГіГЇГ®Г°Г­Г®Г±ГІГј', elements.checkbox.FireResistance) then
+		if imgui.Checkbox(u8'[Вкл/выкл] Огнеупорность', elements.checkbox.FireResistance) then
 			HLcfg.config.FireResistance = elements.checkbox.FireResistance.v
 			save()
 		end
-		if imgui.Checkbox(u8'[Г‚ГЄГ«/ГўГ»ГЄГ«] Г…Г§Г¤Гі ГЎГҐГ§ ГЇГ°Г Гў', elements.checkbox.DriveNoLicenze) then
+		if imgui.Checkbox(u8'[Вкл/выкл] Езду без прав', elements.checkbox.DriveNoLicenze) then
 			HLcfg.config.DriveNoLicenze = elements.checkbox.DriveNoLicenze.v
 			save()
 		end
-		if imgui.Checkbox(u8'[Г‚ГЄГ«/ГўГ»ГЄГ«] TriggerBot', elements.checkbox.AutoShot) then
+		if imgui.Checkbox(u8'[Вкл/выкл] TriggerBot', elements.checkbox.AutoShot) then
 			HLcfg.config.AutoShot = elements.checkbox.AutoShot.v
 			save()
 		end
-		if imgui.Checkbox(u8'[Г‚ГЄГ«/ГўГ»ГЄГ«] High jump on BMX', elements.checkbox.JBMX) then
+		if imgui.Checkbox(u8'[Вкл/выкл] High jump on BMX', elements.checkbox.JBMX) then
 			HLcfg.config.JBMX = elements.checkbox.JBMX.v
 			save()
 		end
-		if imgui.Checkbox(u8'[Г‚ГЄГ«/ГўГ»ГЄГ«] ГЃГҐГ±ГЄГ®Г­ГҐГ·Г­Г®ГҐ Г§Г¤Г®Г°Г®ГўГјГҐ', elements.checkbox.InfinityHealth) then
+		if imgui.Checkbox(u8'[Вкл/выкл] Бесконечное здоровье', elements.checkbox.InfinityHealth) then
 			HLcfg.config.InfinityHealth = elements.checkbox.InfinityHealth.v
 			save()
 		end
-		if imgui.Checkbox(u8'[Г‚ГЄГ«/ГўГ»ГЄГ«] ГЊГҐГЈГ  ГЏГ°Г»Г¦Г®ГЄ', elements.checkbox.MJump) then
+		if imgui.Checkbox(u8'[Вкл/выкл] Мега Прыжок', elements.checkbox.MJump) then
 			HLcfg.config.MJump = elements.checkbox.MJump.v
 			save()
 		end
-		if imgui.Checkbox(u8'[Г‚ГЄГ«/ГўГ»ГЄГ«] ГЂГ­ГІГЁ-ГЃГ«Г®ГЄ Г„ГўГЁГЈГ ГІГҐГ«Гї', elements.checkbox.AntiBlockCar) then
+		if imgui.Checkbox(u8'[Вкл/выкл] Анти-Блок Двигателя', elements.checkbox.AntiBlockCar) then
 			HLcfg.config.AntiBlockCar = elements.checkbox.AntiBlockCar.v
 			save()
 		end
-		if imgui.Checkbox(u8'[Г‚ГЄГ«/ГўГ»ГЄГ«] ГЂГ­ГІГЁ-Г‡Г ГЇГ°Г ГўГЄГ ', elements.checkbox.AntiZP) then
+		if imgui.Checkbox(u8'[Вкл/выкл] Анти-Заправка', elements.checkbox.AntiZP) then
 			HLcfg.config.AntiZP = elements.checkbox.AntiZP.v
 			save()
 		end
-		if imgui.Checkbox(u8'[Г‚ГЄГ«/ГўГ»ГЄГ«] Г…Г§Г¤Гі ГЇГ® ГўГ®Г¤ГҐ', elements.checkbox.DriveInWater) then
+		if imgui.Checkbox(u8'[Вкл/выкл] Езду по воде', elements.checkbox.DriveInWater) then
 			HLcfg.config.DriveInWater = elements.checkbox.DriveInWater.v
 			save()
 		end
-		if imgui.Checkbox(u8'[Г‚ГЄГ«/ГўГ»ГЄГ«] ГЂГ­ГІГЁ-ГўГ§Г°Г»Гў ГЇГ°ГЁ ГЇГҐГ°ГҐГўГ®Г°Г®ГІГҐ', elements.checkbox.AntiBoomPDownCar) then
+		if imgui.Checkbox(u8'[Вкл/выкл] Анти-взрыв при перевороте', elements.checkbox.AntiBoomPDownCar) then
 			HLcfg.config.AntiBoomPDownCar = elements.checkbox.AntiBoomPDownCar.v
 			save()
 		end
-		if imgui.Checkbox(u8'[Г‚ГЄГ«/ГўГ»ГЄГ«] Г‚Г• Г‘ГЄГҐГ«ГҐГІ', elements.checkbox.WHSkeleton) then
+		if imgui.Checkbox(u8'[Вкл/выкл] ВХ Скелет', elements.checkbox.WHSkeleton) then
 			HLcfg.config.WHSkeleton = elements.checkbox.WHSkeleton.v
 			save()
 		end
-		if imgui.Checkbox(u8'[Г‚ГЄГ«/ГўГ»ГЄГ«] Г‚Г• ГЉГ«Г Г¤Г®Гў [ARZ]', elements.checkbox.ForClad) then
+		if imgui.Checkbox(u8'[Вкл/выкл] ВХ Кладов [ARZ]', elements.checkbox.ForClad) then
 			HLcfg.config.ForClad = elements.checkbox.ForClad.v
 			save()
 		end
-		if imgui.Checkbox(u8'[Г‚ГЄГ«/ГўГ»ГЄГ«] Г‚ГЉ Г‡Г ГЄГ«Г Г¤Г®ГЄ [ARZ]', elements.checkbox.NarkoWH) then
+		if imgui.Checkbox(u8'[Вкл/выкл] ВК Закладок [ARZ]', elements.checkbox.NarkoWH) then
 			HLcfg.config.NarkoWH = elements.checkbox.NarkoWH.v
 			save()
 		end
-		if imgui.Checkbox(u8'[Г‚ГЄГ«/ГўГ»ГЄГ«] ГЌГҐГўГЁГ¤ГЁГ¬ГЄГі', elements.checkbox.Ghost) then
+		if imgui.Checkbox(u8'[Вкл/выкл] Невидимку', elements.checkbox.Ghost) then
 			HLcfg.config.Ghost = elements.checkbox.Ghost.v
 			save()
 		end
@@ -669,20 +670,20 @@ function imgui.OnDrawFrame()
 		local ex, ey = getScreenResolution()
 		imgui.SetNextWindowPos(imgui.ImVec2(ex / 2 - 200, ey / 2 - 200), imgui.Cond.FirstUseEver)
 		imgui.SetNextWindowSize(imgui.ImVec2(220, 300), imgui.Cond.FirstUseEver)
-		imgui.Begin(u8'Г‚Г°ГҐГ¤.Г—ГЁГІГ»', nil, imgui.WindowFlags.NoCollapse + imgui.WindowFlags.NoResize)
-		if imgui.Button(u8'ГЌГ Г§Г Г¤ <<', imgui.ImVec2(200, 30)) then
+		imgui.Begin(u8'Вред.Читы', nil, imgui.WindowFlags.NoCollapse + imgui.WindowFlags.NoResize)
+		if imgui.Button(u8'Назад <<', imgui.ImVec2(200, 30)) then
 			MenuVCheats.v = false
 			MenuWindow.v = true
 		end
-		if imgui.Checkbox(u8'[Г‚ГЄГ«/ГўГ»ГЄГ«] CarShot', elements.checkbox.CarShot) then
+		if imgui.Checkbox(u8'[Вкл/выкл] CarShot', elements.checkbox.CarShot) then
 			HLcfg.config.CarShot = elements.checkbox.CarShot.v
 			save()
 		end
-		if imgui.Checkbox(u8'[Г‚ГЄГ«/ГўГ»ГЄГ«] ГђГўГ Г­ГЄГі', elements.checkbox.Rvanka) then
+		if imgui.Checkbox(u8'[Вкл/выкл] Рванку', elements.checkbox.Rvanka) then
 			HLcfg.config.Rvanka = elements.checkbox.Rvanka.v
 			save()
 		end
-		if imgui.Checkbox(u8'[Г‚ГЄГ«/ГўГ»ГЄГ«] Г‹Г ГЈГЁ', elements.checkbox.Lugs) then
+		if imgui.Checkbox(u8'[Вкл/выкл] Лаги', elements.checkbox.Lugs) then
 			HLcfg.config.Lugs = elements.checkbox.Lugs.v
 			save()
 		end
@@ -693,20 +694,20 @@ function imgui.OnDrawFrame()
 		local ex, ey = getScreenResolution()
 		imgui.SetNextWindowPos(imgui.ImVec2(ex / 2 - 200, ey / 2 - 200), imgui.Cond.FirstUseEver)
 		imgui.SetNextWindowSize(imgui.ImVec2(250, 180), imgui.Cond.FirstUseEver)
-		imgui.Begin(u8'Г‚Г»Г¤Г ГІГј Г®Г°ГіГ¦ГЁГҐ', nil, imgui.WindowFlags.NoCollapse + imgui.WindowFlags.NoResize)
-		if imgui.Button(u8'ГЌГ Г§Г Г¤ <<', imgui.ImVec2(200, 30)) then
+		imgui.Begin(u8'Выдать оружие', nil, imgui.WindowFlags.NoCollapse + imgui.WindowFlags.NoResize)
+		if imgui.Button(u8'Назад <<', imgui.ImVec2(200, 30)) then
 			MenuGun.v = false
 			MenuWindow.v = true
 		end
-		imgui.Text(u8'Г‚ГўГҐГ¤ГЁГІГҐ ГЄГ®Г«-ГўГ® ГЇГ ГІГ°Г®Г­')
+		imgui.Text(u8'Введите кол-во патрон')
 		imgui.InputText(u8'##GiveGun', AmmoGun)
-		imgui.Text(u8'Г‚Г»ГЎГҐГ°ГЁГІГҐ Г®Г°ГіГ¦ГЁГҐ')
+		imgui.Text(u8'Выберите оружие')
 		imgui.Combo('##COMBO', selectGun, ComboGun)
-		if imgui.Button(u8'Г‚Г»Г¤Г ГІГј', imgui.ImVec2(200, 0)) then
+		if imgui.Button(u8'Выдать', imgui.ImVec2(200, 0)) then
 			if AmmoGun.v ~= '' then
 				checks()
 			else
-				sampAddChatMessage('{FF0000}[ГЋГёГЁГЎГЄГ ] {FF8C00}Г“ГЄГ Г¦ГЁГІГҐ ГЄГ®Г«-ГўГ® ГЇГ ГІГ°Г®Г­.', 0xFFFF0000)
+				sampAddChatMessage('{FF0000}[Ошибка] {FF8C00}Укажите кол-во патрон.', 0xFFFF0000)
 			end
 		end
 		imgui.End()
@@ -716,60 +717,60 @@ function imgui.OnDrawFrame()
 		local ex, ey = getScreenResolution()
 		imgui.SetNextWindowPos(imgui.ImVec2(ex / 2 - 200, ey / 2 - 200), imgui.Cond.FirstUseEver)
 		imgui.SetNextWindowSize(imgui.ImVec2(270, 180), imgui.Cond.FirstUseEver)
-		imgui.Begin(u8'ГЏГ°Г®Г·ГҐГҐ', nil, imgui.WindowFlags.NoCollapse + imgui.WindowFlags.NoResize)
-		if imgui.Button(u8'ГЌГ Г§Г Г¤ <<', imgui.ImVec2(250, 30)) then
+		imgui.Begin(u8'Прочее', nil, imgui.WindowFlags.NoCollapse + imgui.WindowFlags.NoResize)
+		if imgui.Button(u8'Назад <<', imgui.ImVec2(250, 30)) then
 			Other.v = false
 			MenuWindow.v = true
 		end
-		if imgui.Checkbox(u8'[Г‚ГЄГ«/ГўГ»ГЄГ«] Г—ГЁГ±ГІГ»Г© Г±ГЄГ°ГЁГ­', elements.checkbox.SafeScreen) then
+		if imgui.Checkbox(u8'[Вкл/выкл] Чистый скрин', elements.checkbox.SafeScreen) then
 			HLcfg.config.SafeScreen = elements.checkbox.SafeScreen.v
 			save()
 		end
-		if imgui.Checkbox(u8'[Г‚ГЄГ«/ГўГ»ГЄГ«] Г—Г ГІ Г­Г  T', elements.checkbox.ChatT) then
+		if imgui.Checkbox(u8'[Вкл/выкл] Чат на T', elements.checkbox.ChatT) then
 			HLcfg.config.ChatT = elements.checkbox.ChatT
 			save()
 		end
-		if imgui.Checkbox(u8'[Г‚ГЄГ«/ГўГ»ГЄГ«] Г‘ГҐГ°Г»Г© Г°Г Г¤Г Г°', elements.checkbox.GRadar) then
+		if imgui.Checkbox(u8'[Вкл/выкл] Серый радар', elements.checkbox.GRadar) then
 			HLcfg.config.GRadar = elements.checkbox.GRadar.v
 			save()
 		end
-		if imgui.Checkbox(u8'[Г‚ГЄГ«/ГўГ»ГЄГ«] AntiBlockedPlayer', elements.checkbox.BlockedPlayer) then
+		if imgui.Checkbox(u8'[Вкл/выкл] AntiBlockedPlayer', elements.checkbox.BlockedPlayer) then
 			HLcfg.config.BlockedPlayer = elements.checkbox.BlockedPlayer.v 
 			save()
 		end
-		if imgui.Checkbox(u8'[Г‚ГЄГ«/ГўГ»ГЄГ«] ГЋГ·ГЁГ±ГІГЄГі /dl', elements.checkbox.ClearDl) then
+		if imgui.Checkbox(u8'[Вкл/выкл] Очистку /dl', elements.checkbox.ClearDl) then
 			HLcfg.config.ClearDl = elements.checkbox.ClearDl.v
 			save()
 		end
-		if imgui.Checkbox(u8'[Г‚ГЄГ«/ГўГ»ГЄГ«] ГЃГ»Г±ГІГ°ГіГѕ Г®Г±ГІГ Г­Г®ГўГЄГі', elements.checkbox.MStop) then
+		if imgui.Checkbox(u8'[Вкл/выкл] Быструю остановку', elements.checkbox.MStop) then
 			HLcfg.config.MStop = elements.checkbox.MStop.v
 			save()
 		end
-		if imgui.Checkbox(u8'[Г‚ГЄГ«/ГўГ»ГЄГ«] AntiCarSkill', elements.checkbox.AntiCarSkill) then
+		if imgui.Checkbox(u8'[Вкл/выкл] AntiCarSkill', elements.checkbox.AntiCarSkill) then
 			HLcfg.config.AntiCarSkill = elements.checkbox.AntiCarSkill.v
 			save()
 		end
-		if imgui.Checkbox(u8'[Г‚ГЄГ«/ГўГ»ГЄГ«] AntiEject', elements.checkbox.AntiEject) then
+		if imgui.Checkbox(u8'[Вкл/выкл] AntiEject', elements.checkbox.AntiEject) then
 			HLcfg.config.AntiEject = elements.checkbox.AntiEject.v
 			save()
 		end
-		if imgui.Checkbox(u8'[Г‚ГЄГ«/ГўГ»ГЄГ«] NoRadio', elements.checkbox.NoRadio) then
+		if imgui.Checkbox(u8'[Вкл/выкл] NoRadio', elements.checkbox.NoRadio) then
 			HLcfg.config.NoRadio = elements.checkbox.NoRadio.v
 			save()
 		end
-		if imgui.Checkbox(u8'[Г‚ГЄГ«/ГўГ»ГЄГ«] Г”ГіГ­ГЄГ¶ГЁГѕ "Г‚Г±ГҐГЈГ¤Г  Г±Г»ГІГ»Г©"', elements.checkbox.NoEatAll) then
+		if imgui.Checkbox(u8'[Вкл/выкл] Функцию "Всегда сытый"', elements.checkbox.NoEatAll) then
 			HLcfg.config.NoEatAll = elements.checkbox.NoEatAll.v
 			save()
 		end
-		if imgui.Checkbox(u8'[Г‚ГЄГ«/ГўГ»ГЄГ«] Г’Г°ГҐГ©Г±ГҐГ° ГЇГіГ«Гј', elements.checkbox.Traicer) then
+		if imgui.Checkbox(u8'[Вкл/выкл] Трейсер пуль', elements.checkbox.Traicer) then
 			HLcfg.config.Traicer = elements.checkbox.Traicer.v
 			save()
 		end
-		if imgui.Checkbox(u8'[Г‚ГЄГ«/ГўГ»ГЄГ«] ГЂГ­ГІГЁ-ГђГўГ Г­ГЄГ ', elements.checkbox.AntiRv) then
+		if imgui.Checkbox(u8'[Вкл/выкл] Анти-Рванка', elements.checkbox.AntiRv) then
 			HLcfg.config.AntiRv = elements.checkbox.AntiRv.v
 			save()
 		end
-		if imgui.Checkbox(u8'[Г‚ГЄГ«/ГўГ»ГЄГ«] ГЂГ­ГІГЁ-ГђГҐГЄГ®Г­', elements.checkbox.AntiRecon) then
+		if imgui.Checkbox(u8'[Вкл/выкл] Анти-Рекон', elements.checkbox.AntiRecon) then
 			HLcfg.config.AntiRecon = elements.checkbox.AntiRecon.v
 			save()
 		end
@@ -781,63 +782,63 @@ function imgui.OnDrawFrame()
 		imgui.SetNextWindowPos(imgui.ImVec2(ex / 2 - 200, ey / 2 - 200), imgui.Cond.FirstUseEver)
 		imgui.SetNextWindowSize(imgui.ImVec2(260, 220), imgui.Cond.FirstUseEver)
 		imgui.Begin(u8'Nops', nil, imgui.WindowFlags.NoCollapse + imgui.WindowFlags.NoResize)
-		if imgui.Button(u8'ГЌГ Г§Г Г¤ <<', imgui.ImVec2(200, 30)) then
+		if imgui.Button(u8'Назад <<', imgui.ImVec2(200, 30)) then
 			MenuPatch.v = false
 			MenuWindow.v = true
 		end
-		if imgui.Checkbox(u8'[Г‚ГЄГ«/ГўГ»ГЄГ«] Nop NoFreeze', elements.checkbox.NoFreeze) then
+		if imgui.Checkbox(u8'[Вкл/выкл] Nop NoFreeze', elements.checkbox.NoFreeze) then
 			HLcfg.config.NoFreeze = elements.checkbox.NoFreeze.v
 			save()
 		end
-		if imgui.Checkbox(u8'[Г‚ГЄГ«/ГўГ»ГЄГ«] Nop ShowDialog', elements.checkbox.ShowDialog) then
+		if imgui.Checkbox(u8'[Вкл/выкл] Nop ShowDialog', elements.checkbox.ShowDialog) then
 			HLcfg.config.ShowDialog = elements.checkbox.ShowDialog.v
 			save()
 		end
-		if imgui.Checkbox(u8'[Г‚ГЄГ«/ГўГ»ГЄГ«] Nop Spectate', elements.checkbox.Spectate) then
+		if imgui.Checkbox(u8'[Вкл/выкл] Nop Spectate', elements.checkbox.Spectate) then
 			HLcfg.config.Spectate = elements.checkbox.Spectate.v
 			save()
 		end
-		if imgui.Checkbox(u8'[Г‚ГЄГ«/ГўГ»ГЄГ«] Nop Health', elements.checkbox.NHealth) then
+		if imgui.Checkbox(u8'[Вкл/выкл] Nop Health', elements.checkbox.NHealth) then
 			HLcfg.config.NHealth = elements.checkbox.NHealth.v
 			save()
 		end
-		if imgui.Checkbox(u8'[Г‚ГЄГ«/ГўГ»ГЄГ«] Nop GiveGun', elements.checkbox.GiveGun) then
+		if imgui.Checkbox(u8'[Вкл/выкл] Nop GiveGun', elements.checkbox.GiveGun) then
 			HLcfg.config.GiveGun = elements.checkbox.GiveGun.v 
 			save()
 		end
-		if imgui.Checkbox(u8'[Г‚ГЄГ«/ГўГ»ГЄГ«] Nop ResetGun', elements.checkbox.ResetGun) then
+		if imgui.Checkbox(u8'[Вкл/выкл] Nop ResetGun', elements.checkbox.ResetGun) then
 			HLcfg.config.ResetGun = elements.checkbox.ResetGun.v
 			save()
 		end
-		if imgui.Checkbox(u8'[Г‚ГЄГ«/ГўГ»ГЄГ«] Nop SetGun', elements.checkbox.SetGun) then
+		if imgui.Checkbox(u8'[Вкл/выкл] Nop SetGun', elements.checkbox.SetGun) then
 			HLcfg.config.SetGun = elements.checkbox.SetGun.v
 			save()
 		end
-		if imgui.Checkbox(u8'[Г‚ГЄГ«/ГўГ»ГЄГ«] Nop RequestClass', elements.checkbox.RequestClass) then
+		if imgui.Checkbox(u8'[Вкл/выкл] Nop RequestClass', elements.checkbox.RequestClass) then
 			HLcfg.config.RequestClass = elements.checkbox.RequestClass.v
 			save()
 		end
-		if imgui.Checkbox(u8'[Г‚ГЄГ«/ГўГ»ГЄГ«] Nop RequestSpawn', elements.checkbox.RequestSpawn) then
+		if imgui.Checkbox(u8'[Вкл/выкл] Nop RequestSpawn', elements.checkbox.RequestSpawn) then
 			HLcfg.config.RequestSpawn = elements.checkbox.RequestSpawn.v
 			save()
 		end
-		if imgui.Checkbox(u8'[Г‚ГЄГ«/ГўГ»ГЄГ«] Nop ApplyAnimation', elements.checkbox.ApplyAnimation) then
+		if imgui.Checkbox(u8'[Вкл/выкл] Nop ApplyAnimation', elements.checkbox.ApplyAnimation) then
 			HLcfg.config.ApplyAnimation = elements.checkbox.ApplyAnimation.v
 			save()
 		end
-		if imgui.Checkbox(u8'[Г‚ГЄГ«/ГўГ»ГЄГ«] Nop ClearAnimation', elements.checkbox.ClearAnimation) then
+		if imgui.Checkbox(u8'[Вкл/выкл] Nop ClearAnimation', elements.checkbox.ClearAnimation) then
 			HLcfg.config.ClearAnimation = elements.checkbox.ClearAnimation.v
 			save()
 		end
-		if imgui.Checkbox(u8'[Г‚ГЄГ«/ГўГ»ГЄГ«] Nop ForceClass', elements.checkbox.ForceClass) then
+		if imgui.Checkbox(u8'[Вкл/выкл] Nop ForceClass', elements.checkbox.ForceClass) then
 			HLcfg.config.ForceClass = elements.checkbox.ForceClass.v
 			save()
 		end
-		if imgui.Checkbox(u8'[Г‚ГЄГ«/ГўГ»ГЄГ«] Nop FacingAngle', elements.checkbox.FacingAngle) then
+		if imgui.Checkbox(u8'[Вкл/выкл] Nop FacingAngle', elements.checkbox.FacingAngle) then
 			HLcfg.config.FacingAngle = elements.checkbox.FacingAngle.v 
 			save()
 		end
-		if imgui.Checkbox(u8'[Г‚ГЄГ«/ГўГ»ГЄГ«] Nop ToggleControl', elements.checkbox.ToggleControl) then
+		if imgui.Checkbox(u8'[Вкл/выкл] Nop ToggleControl', elements.checkbox.ToggleControl) then
 			HLcfg.config.ToggleControl = elements.checkbox.ToggleControl.v
 			save()
 		end
@@ -893,7 +894,7 @@ function check_buttons()
 				if sampIs3dTextDefined(n) then
 					local string, clr, posX, posY, posZ, dist, iW, pID, vehID = sampGet3dTextInfoById(n)
 					local Px, Py, Pz = getCharCoordinates(playerPed)
-					if isPointOnScreen(posX, posY, posZ, 0.0) and string.find(string, 'Г‡Г ГЄГ«Г Г¤ГЄГ ') then
+					if isPointOnScreen(posX, posY, posZ, 0.0) and string.find(string, 'Закладка') then
 						if getDistanceBetweenCoords2d(posX, posY, Px, Py) > 4.0 then
 							local wposX, wposY = convert3DCoordsToScreen(posX, posY, posZ)
 							renderFontDrawText(font, string, wposX, wposY, clr)
@@ -914,7 +915,7 @@ function check_buttons()
 						wpos2X, wpos2Y = convert3DCoordsToScreen(charPosX, charPosY, charPosZ)
 						renderDrawLine(wposX, wposY, wpos2X, wpos2Y, 1, 0x883c8fb5)
 						renderDrawPolygon(wposX, wposY, 3, 3, 7, 0, 0xba3c8fb5)
-						renderFontDrawText(font, "{3c8fb5}[WH] {ffffff} ГЉГ«Г Г¤", wposX + 5, wposY - 7, 0xcac1f4c1)
+						renderFontDrawText(font, "{3c8fb5}[WH] {ffffff} Клад", wposX + 5, wposY - 7, 0xcac1f4c1)
 					end
 				end
 			end
@@ -1738,7 +1739,7 @@ function samp.onSetVehicleVelocity()
 end
 
 function samp.onCreate3DText(id,color,position,dist,testLOS,attachedPlayerId,attachedVehicleId,text)
-    if color == -1 and text:find("ГђГ Г¤Г Г°%s*ГЊГ ГЄГ±ГЁГ¬Г Г«ГјГ­Г Гї Г±ГЄГ®Г°Г®Г±ГІГј: {D1DE43}%d+ ГЄГ¬/Г·.{FFFFFF}%s*ГГІГ°Г Гґ Г§Г  Г­Г Г°ГіГёГҐГ­ГЁГҐ: {D1DE43}%d+%$.{FFFFFF}%s*ГЏГ®Г±ГІГ ГўГЁГ«: {D1DE43}.*") then
+    if color == -1 and text:find("Радар%s*Максимальная скорость: {D1DE43}%d+ км/ч.{FFFFFF}%s*Штраф за нарушение: {D1DE43}%d+%$.{FFFFFF}%s*Поставил: {D1DE43}.*") then
         if not checkIntable(radars, position.x,position.y,position.z) then
             table.insert(radars,{position.x,position.y,position.z})
         end
